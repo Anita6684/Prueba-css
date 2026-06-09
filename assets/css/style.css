@@ -1,0 +1,149 @@
+
+:root {
+    --primary-color: #2c3e50;
+    --accent-color: #3498db;
+    --text-light: #ffffff;
+    --bg-light: #f4f4f4;
+    --transition-speed: 0.4s;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+    background-color: var(--bg-light);
+    display: flex;
+    flex-direction: column; /* Por defecto para móvil (Req 1) */
+}
+
+/* MENÚ LATERAL  */
+.sidebar {
+    background-color: var(--primary-color);
+    color: var(--text-light);
+    padding: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    z-index: 100;
+}
+
+.logo {
+    font-size: 1.5rem;
+    font-weight: bold;
+    text-align: center;
+}
+
+.sidebar nav {
+    display: flex;
+    justify-content: center; 
+    gap: 15px;
+}
+
+.sidebar nav a {
+    color: var(--text-light);
+    text-decoration: none;
+    font-size: 0.9rem;
+    transition: color var(--transition-speed);
+}
+
+.sidebar nav a:hover {
+    color: var(--accent-color);
+}
+
+/*  MEDIA QUERIES */
+@media (min-width: 768px) {
+    body {
+        flex-direction: row; /* Cambio a menú lateral en desktop */
+    }
+
+    .sidebar {
+        width: 250px;
+        height: 100vh;
+        position: fixed;
+        justify-content: flex-start;
+    }
+
+    .sidebar nav {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .content {
+        margin-left: 250px; /* Desplazamiento por la sidebar fija */
+        width: calc(100% - 250px);
+    }
+}
+
+/* GALERÍA DE IMÁGENES*/
+.gallery {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+    padding: 40px 20px;
+}
+
+.gallery img {
+    width: 100%;
+    height: 250px;
+    object-fit: cover;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    
+    /* Efecto Visual: Blanco y negro */
+    filter: grayscale(100%);
+    transition: transform var(--transition-speed), filter var(--transition-speed);
+}
+
+.gallery img:hover {
+    filter: grayscale(0%);
+    transform: scale(1.05); /* Transformación atractiva */
+    cursor: pointer;
+}
+
+/* SECCIONES GENERALES */
+.hero {
+    height: 40vh;
+    background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('https://picsum.photos');
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    text-align: center;
+    padding: 20px;
+}
+
+.info {
+    padding: 50px 20px;
+    text-align: center;
+}
+
+/*FOOTER */
+footer {
+    background-color: #1a252f;
+    color: white;
+    padding: 40px 20px;
+    display: flex;
+    flex-direction: column; /* Mobile */
+    gap: 30px;
+    text-align: center;
+}
+
+footer div h3 {
+    margin-bottom: 15px;
+    color: var(--accent-color);
+}
+
+@media (min-width: 600px) {
+    footer {
+        flex-direction: row; /* Desktop/Tablet */
+        justify-content: space-around;
+        text-align: left;
+    }
+}
