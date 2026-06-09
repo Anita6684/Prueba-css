@@ -147,3 +147,17 @@ footer div h3 {
         text-align: left;
     }
 }
+.redes a {
+    display: block;
+    margin-bottom: 10px;
+}
+.redes a {
+    display: block;
+    color: white;
+    text-decoration: none;
+    margin-bottom: 10px;
+}
+
+.redes a:hover {
+    color: #00bfff;
+}
